@@ -1,0 +1,94 @@
+$white: rgb(241, 235, 235);
+$white2: rgb(206, 200, 200);
+$purple: rgb(71, 30, 71);
+$pink: rgb(212, 155, 212);
+$pink_hover: rgb(136, 58, 136);
+$grey: rgba(173, 169, 169, 0.733);
+$font: "Pacifico", cursive;
+
+%nav_button {
+  padding: 0.5rem 0.7rem;
+  background-color: transparent;
+  border: 0.2px solid white;
+  outline: none;
+  border-radius: 2rem;
+  font-size: 1rem;
+  font-family: sans-serif;
+  font-weight: 800;
+  transition: all 100ms ease 0s;
+  color: $white;
+
+  &:hover {
+    background-color: $white;
+    color: $purple;
+    cursor: pointer;
+  }
+}
+
+%submit_button {
+  padding: 0.5rem 0.7rem;
+  background-color: $purple;
+  color: $white;
+  border: none;
+  border-radius: 2rem;
+  outline: none;
+  font-size: 1rem;
+  font-size: clamp(0.5rem, 10vw, 1rem);
+  font-family: sans-serif;
+  font-weight: 800;
+  transition: all 100ms ease 0s;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $pink_hover;
+  }
+}
+
+%logo {
+  display: flex;
+  align-items: center;
+
+  svg {
+    min-width: 2.5rem;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+    font-size: clamp(1.2rem, 10vw, 1.8rem);
+    font-family: $font;
+    letter-spacing: 0.1rem;
+    color: $white;
+  }
+}
+
+%profileImage {
+  border: 2.5px solid $white;
+  border-radius: 7rem;
+  background-image: url("./images/face.jpeg");
+  background-size: cover;
+  background-position: center;
+  min-width: 10rem;
+  min-height: 10rem;
+  max-width: 10rem;
+  max-height: 10rem;
+}
+
+@keyframes loading {
+  from {
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes wave {
+  0% {
+    transform: rotate(-90deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-90deg);
+  }
+}
