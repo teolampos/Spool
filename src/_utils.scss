@@ -1,8 +1,9 @@
 $white: rgb(241, 235, 235);
-$white2: rgb(206, 200, 200);
+$white2: rgb(236, 233, 233);
 $purple: rgb(71, 30, 71);
 $pink: rgb(212, 155, 212);
 $pink_hover: rgb(136, 58, 136);
+$black: rgb(8, 7, 7);
 $grey: rgba(173, 169, 169, 0.733);
 $font: "Pacifico", cursive;
 
@@ -64,7 +65,7 @@ $font: "Pacifico", cursive;
 %profileImage {
   border: 2.5px solid $white;
   border-radius: 7rem;
-  background-image: url("./images/face.jpeg");
+  background-image: url("./images/blank_profile.jpg");
   background-size: cover;
   background-position: center;
   min-width: 10rem;
@@ -90,5 +91,14 @@ $font: "Pacifico", cursive;
   }
   100% {
     transform: rotate(-90deg);
+  }
+}
+
+@keyframes routingAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

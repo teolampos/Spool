@@ -1,26 +1,27 @@
 import React from "react";
-import Home from "./Components/Home";
-import Register from "./Components/Register";
-import Login from "./Components/Login";
-import Dashboard from "./Components/Dashboard";
-import Profile from "./Components/Profile";
-import SocialMenu from "./Components/SocialMenu";
-import View from "./Components/View";
-import Error from "./Components/Error";
-import LoadingPage from "./Components/LoadingPage";
+import Home from "./Pages/Home";
+import Login from "./Pages/Login";
+import Register from "./Pages/Register";
+import Dashboard from "./Pages/Dashboard";
+import Profile from "./Pages/Profile";
+import Menu from "./Pages/Menu";
+import View from "./Pages/View";
+import Error from "./Pages/Error";
+import Protected from "./Pages/Protected";
 import { Routes, Route } from "react-router-dom";
 
 const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="login" element={<Login />} />
+      <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      <Route path="/dashboard" element={<Dashboard />} />
-      <Route path="/profile" element={<Profile />} />
-      <Route path="/social-menu" element={<SocialMenu />} />
+      <Route element={<Protected />}>
+        <Route path="/dashboard/:username" element={<Dashboard />} />
+        <Route path="/profile/:username" element={<Profile />} />
+        <Route path="/menu" element={<Menu />} />
+      </Route>
       <Route path="/view/:user" element={<View />} />
-      <Route path="/loading" element={<LoadingPage />} />
       <Route path="*" element={<Error />} />
     </Routes>
   );

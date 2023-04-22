@@ -1,15 +1,40 @@
-import React from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ userInfo, image }) => {
+  const [show, setShow] = useState(false);
   const navigator = useNavigate();
+  const locator = useLocation();
+
+  const handleLogout = async () => {
+    try {
+      const resp = await fetch("http://localhost:5000/logout", {
+        credentials: "include",
+        method: "DELETE",
+      });
+      if (resp.ok) {
+        navigator("/");
+      } else {
+        throw new Error("Failed to logout. Try again");
+      }
+    } catch (err) {
+      window.alert(err);
+    }
+  };
+
+  //THIS MAKES THE DASHBOARD ICON VISIBLE WHEN THE USER IS ON THE PROFILE PAGE
+  useEffect(() => {
+    if (locator.pathname == `/profile/${userInfo.username}`) {
+      setShow(true);
+    }
+  }, []);
 
   return (
     <>
       <nav className="nav2">
         <div className="logo">
           <svg
-            classname="logos"
+            className="logos"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 48 48"
           >
@@ -80,11 +105,23 @@ const Navbar = () => {
           <h1>Spool</h1>
         </div>
         <div className="navbarMainIcons">
-          <span onClick={() => navigator("/profile")}></span>
-          <span className="material-icons">logout</span>
+          <span
+            onClick={() => navigator(`/profile/${userInfo.username}`)}
+            style={image ? { backgroundImage: `url(${image.url})` } : {}}
+          ></span>
+          {show && (
+            <span
+              className="material-icons"
+              onClick={() => navigator(`/dashboard/${userInfo.username}`)}
+            >
+              dashboard
+            </span>
+          )}
+          <span className="material-icons" onClick={handleLogout}>
+            logout
+          </span>
         </div>
       </nav>
-      <Outlet />
     </>
   );
 };
