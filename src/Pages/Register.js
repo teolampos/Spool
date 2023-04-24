@@ -37,11 +37,11 @@ const Register = () => {
       const user = { username, email, password };
       const resp = await fetch(`${process.env.REACT_APP_SERVER_API}/register`, {
         method: "POST",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(user),
-        credentials: "include",
       });
       if (resp.ok) {
         const data = await resp.json();

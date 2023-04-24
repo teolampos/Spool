@@ -18,7 +18,7 @@ export const useSession = () => {
         throw new Error("Not logged in");
       }
     } catch (err) {
-      window.alert(err);
+      console.log(err);
     }
   };
   useEffect(() => {
