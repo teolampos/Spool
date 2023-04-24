@@ -13,9 +13,7 @@ const Navbar = ({ userInfo, image }) => {
         method: "DELETE",
       });
       if (resp.ok) {
-        setTimeout(() => {
-          navigator("/");
-        }, 3000);
+        navigator("/");
       } else {
         throw new Error("Failed to logout. Try again");
       }
