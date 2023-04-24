@@ -10,9 +10,6 @@ const Register = () => {
   const [loading, setLoading] = useState(false);
   const navigator = useNavigate();
 
-  //IF ALREADY LOGGED IN, REDIRECT TO DASHBOARD
-  useSession();
-
   //REGISTER
   const handleRegister = async (e) => {
     try {

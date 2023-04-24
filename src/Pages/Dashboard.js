@@ -15,16 +15,6 @@ const Dashboard = () => {
   //GETTING THE CONTEXT FROM THE <OUTLET/> COMPONENT
   const userInfo = useOutletContext();
 
-  //THE URL GETS SET AUTOMATICALLY WITH THE TOKEN INFORMATION
-  useEffect(() => {
-    window.history.replaceState(
-      {},
-      "",
-      `https://spool.onrender.com/dashboard/${userInfo.user.username}`,
-      []
-    );
-  }, []);
-
   //COPY ACCOUNT LINK TO CLIPBOARD
   const handleCopy = () => {
     navigator.clipboard.writeText(

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 /*IT IS CALLED WHEN A USER VISITS THE HOME/LOGIN OR REGISTER PAGE. THIS HOOK CHECKS IF THE
-  USER HAS AUTHENTICATED BEFORE AND IF SO REDIRECT HIM TO TEH DASHBOARD
+  USER HAS AUTHENTICATED BEFORE AND IF SO REDIRECT HIM TO THE DASHBOARD
 */
 export const useSession = () => {
   const navigator = useNavigate();
@@ -13,7 +13,7 @@ export const useSession = () => {
       });
       if (resp.ok) {
         const data = await resp.json();
-        navigator(`dashboard/${data.username}`);
+        navigator(`/dashboard/${data.username}`);
       } else {
         throw new Error("Not logged in");
       }

@@ -8,10 +8,6 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
-  const navigator = useNavigate();
-
-  //IF ALREADY LOGGED IN, REDIRECT TO DASHBOARD
-  useSession();
 
   //LOGIN
   const handleLogin = async (e) => {

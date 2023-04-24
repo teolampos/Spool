@@ -13,15 +13,6 @@ const Profile = () => {
   const userInfo = useOutletContext();
   const navigate = useNavigate();
 
-  //THIS CHANGES THE URL BASED ON USER'S TOKEN
-  useEffect(() => {
-    window.history.replaceState(
-      {},
-      "",
-      `https://spool.onrender.com/profile/${userInfo.user.username}`
-    );
-  }, []);
-
   //WE FETCH THE CURRENT USER AND SETTING THE IMAGE
   const fetchUser = async () => {
     try {
