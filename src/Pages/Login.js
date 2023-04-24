@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Loading from "../Components/Loading";
 import { useSession } from "../useSession";
@@ -8,17 +8,19 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
-
   const navigator = useNavigate();
+
+  //IF ALREADY LOGGED IN, REDIRECT TO DASHBOARD
   useSession();
 
+  //LOGIN
   const handleLogin = async (e) => {
     try {
       e.preventDefault();
       setLoading(true);
       if (!username || !password) throw new Error("Empty fields");
       const user = { username, password };
-      const resp = await fetch("http://localhost:5000/login", {
+      const resp = await fetch(`${process.env.REACT_APP_SERVER_API}/login`, {
         credentials: "include",
         method: "POST",
         headers: {
@@ -30,13 +32,11 @@ const Login = () => {
       if (resp.ok) {
         const data = await resp.json();
         navigator(`/dashboard/${data.username}`);
-      } else if (resp.status == 404) {
+      } else if (resp.status === 404) {
         throw new Error("No such user");
-      } else if (resp.status == 403) {
-        setLoading(false);
+      } else if (resp.status === 403) {
         throw new Error("Wrong password");
       } else {
-        setLoading(false);
         throw new Error("Server Error. Please try again.");
       }
     } catch (err) {
@@ -74,7 +74,7 @@ const Login = () => {
           {loading ? (
             <Loading />
           ) : (
-            <button className="submit" type="submit" onClick={handleLogin}>
+            <button className="submit" type="submit">
               Login
             </button>
           )}

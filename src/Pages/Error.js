@@ -7,7 +7,8 @@ const Error = () => {
     setTimeout(() => {
       navigator("/");
     }, 3000);
-  });
+  }, []);
+
   return (
     <section className="errorSection">
       <h1 className="errorMessage">

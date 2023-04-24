@@ -680,11 +680,11 @@ nav {
 }
 
 .loading-circle {
-  min-width: 50px;
-  min-height: 50px;
+  min-width: 40px;
+  min-height: 40px;
   border-radius: 2rem;
   border: 5px dotted $purple;
-  animation: loading 3s linear 0s infinite normal;
+  animation: loading 1.5s linear 0s infinite normal;
 }
 
 .loading-page {
@@ -698,7 +698,7 @@ nav {
     min-height: 64px;
     border-radius: 2rem;
     border: 5px dotted $purple;
-    animation: loading 3s linear 0s infinite normal;
+    animation: loading 1.5s linear 0s infinite normal;
   }
 }
 

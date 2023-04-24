@@ -14,15 +14,17 @@ const View = () => {
   const fetchData = async () => {
     try {
       const resp = await fetch(`http://localhost:5000/users/${user}`);
-      if (resp.status == 404) {
+      if (resp.status === 404) {
         navigator("/");
         throw new Error("No such user exists");
       }
-      const data = await resp.json();
-      setPlatforms(data.platforms);
-      setUserPlatforms(data.socials);
-      if (data.profile !== null) setImage(data.profile.url);
-      if (data.socials.length == 0) setEmpty(true);
+      if (resp.ok) {
+        const data = await resp.json();
+        setUserPlatforms(data.userPlatforms);
+        setPlatforms(data.platforms);
+        if (data.profilePicture !== null) setImage(data.profilePicture.url);
+        if (data.userPlatforms.length === 0) setEmpty(true);
+      } else throw new Error("Internal Server Error");
     } catch (err) {
       window.alert(err);
     }

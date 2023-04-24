@@ -3,6 +3,7 @@ import Navbar from "../Components/Navbar1";
 import { useSession } from "../useSession";
 
 const Home = () => {
+  //IF ALREADY LOGGED IN REDIRECT TO DASHBOARD
   useSession();
 
   return (

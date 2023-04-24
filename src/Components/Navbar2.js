@@ -8,7 +8,7 @@ const Navbar = ({ userInfo, image }) => {
 
   const handleLogout = async () => {
     try {
-      const resp = await fetch("http://localhost:5000/logout", {
+      const resp = await fetch(`${process.env.REACT_APP_SERVER_API}/logout`, {
         credentials: "include",
         method: "DELETE",
       });
@@ -24,7 +24,7 @@ const Navbar = ({ userInfo, image }) => {
 
   //THIS MAKES THE DASHBOARD ICON VISIBLE WHEN THE USER IS ON THE PROFILE PAGE
   useEffect(() => {
-    if (locator.pathname == `/profile/${userInfo.username}`) {
+    if (locator.pathname === `/profile/${userInfo.user.username}`) {
       setShow(true);
     }
   }, []);
@@ -106,13 +106,13 @@ const Navbar = ({ userInfo, image }) => {
         </div>
         <div className="navbarMainIcons">
           <span
-            onClick={() => navigator(`/profile/${userInfo.username}`)}
+            onClick={() => navigator(`/profile/${userInfo.user.username}`)}
             style={image ? { backgroundImage: `url(${image.url})` } : {}}
           ></span>
           {show && (
             <span
               className="material-icons"
-              onClick={() => navigator(`/dashboard/${userInfo.username}`)}
+              onClick={() => navigator(`/dashboard/${userInfo.user.username}`)}
             >
               dashboard
             </span>

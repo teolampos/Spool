@@ -10,8 +10,10 @@ const Register = () => {
   const [loading, setLoading] = useState(false);
   const navigator = useNavigate();
 
+  //IF ALREADY LOGGED IN, REDIRECT TO DASHBOARD
   useSession();
 
+  //REGISTER
   const handleRegister = async (e) => {
     try {
       e.preventDefault();
@@ -19,19 +21,21 @@ const Register = () => {
       setUsername(username.trim());
       setEmail(email.trim());
 
+      //CHECK FOR EMPTY FIELDS
       if (!username || !email || !password) {
         throw new Error("Empty fields");
       }
-
-      if (email.indexOf("@") == -1) {
+      //CHECK IF A @ EXISTS IN EMAIL STRING(SIMPLE EMAIL VALIDATION)
+      if (email.indexOf("@") === -1) {
         throw new Error("Invalid Email!");
       }
+      //SIMPLE PASSWORD VALIDATION
       if (password.length < 4) {
         throw new Error("Password is too short!");
       }
 
       const user = { username, email, password };
-      const resp = await fetch("http://localhost:5000/register ", {
+      const resp = await fetch(`${process.env.REACT_APP_SERVER_API}/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -42,7 +46,7 @@ const Register = () => {
       if (resp.ok) {
         const data = await resp.json();
         navigator(`/dashboard/${data.user.username}`);
-      } else if (resp.status == 400) {
+      } else if (resp.status === 400) {
         const data = await resp.json();
         throw new Error(data.msg);
       } else {
