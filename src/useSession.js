@@ -20,9 +20,8 @@ export const useSession = () => {
     } catch (err) {
       window.alert(err);
     }
-
-    useEffect(() => {
-      auth();
-    }, []);
   };
+  useEffect(() => {
+    auth();
+  }, []);
 };
