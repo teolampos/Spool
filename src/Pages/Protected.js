@@ -27,7 +27,9 @@ const Protected = () => {
         }
       } else {
         navigator("/");
-        window.alert("You need to login.");
+        window.alert(
+          "The requested page did not load. Make sure you are using Chrome or Mozzila from a desktop device to access the site"
+        );
       }
     } catch (err) {
       window.alert(err);
