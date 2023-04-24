@@ -8,6 +8,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
+  const navigator = useNavigate();
 
   //LOGIN
   const handleLogin = async (e) => {
