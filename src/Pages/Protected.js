@@ -26,8 +26,8 @@ const Protected = () => {
           setUserInfo({ user, platforms });
         }
       } else {
-        navigator("/login");
-        window.alert("Redirect to login page.");
+        navigator("/");
+        window.alert("You need to login.");
       }
     } catch (err) {
       window.alert(err);
