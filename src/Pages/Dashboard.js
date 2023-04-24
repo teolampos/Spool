@@ -20,7 +20,7 @@ const Dashboard = () => {
     window.history.replaceState(
       {},
       "",
-      `https://spool.onrender/dashboard/${userInfo.user.username}`,
+      `https://spool.onrender.com/dashboard/${userInfo.user.username}`,
       []
     );
   }, []);
@@ -28,7 +28,7 @@ const Dashboard = () => {
   //COPY ACCOUNT LINK TO CLIPBOARD
   const handleCopy = () => {
     navigator.clipboard.writeText(
-      `https://spool.onrender/view/${userInfo.user.username}`
+      `https://spool.onrender.com/view/${userInfo.user.username}`
     );
     setPopup(true);
     setTimeout(() => {

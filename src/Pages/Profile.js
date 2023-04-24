@@ -18,7 +18,7 @@ const Profile = () => {
     window.history.replaceState(
       {},
       "",
-      `https://spool.onrender/profile/${userInfo.user.username}`
+      `https://spool.onrender.com/profile/${userInfo.user.username}`
     );
   }, []);
 

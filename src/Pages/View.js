@@ -13,7 +13,9 @@ const View = () => {
 
   const fetchData = async () => {
     try {
-      const resp = await fetch(`http://localhost:5000/users/${user}`);
+      const resp = await fetch(
+        `${process.env.REACT_APP_SERVER_API}/users/${user}`
+      );
       if (resp.status === 404) {
         navigator("/");
         throw new Error("No such user exists");
