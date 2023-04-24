@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Loading from "../Components/Loading";
 import { Link, useNavigate } from "react-router-dom";
-import { useSession } from "../useSession";
 
 const Register = () => {
   const [username, setUsername] = useState("");
