@@ -78,12 +78,10 @@ const Dashboard = () => {
         setLoading(false);
         if (data.profilePicture !== null) setImage(data.profilePicture);
       } else {
-        window.location.reload();
         throw new Error("Could not fetch user");
       }
     } catch (err) {
       window.alert(err);
-      window.location.reload();
     }
   };
   useEffect(() => {
