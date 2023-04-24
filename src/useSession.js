@@ -6,17 +6,23 @@ import { useNavigate } from "react-router-dom";
 */
 export const useSession = () => {
   const navigator = useNavigate();
-  useEffect(() => {
-    fetch(`${process.env.REACT_APP_SERVER_API}/auth`, {
-      credentials: "include",
-    })
-      .then((resp) => {
-        if (resp.ok) {
-          resp.json().then((data) => {
-            navigator(`/dashboard/${data.username}`);
-          });
-        }
-      })
-      .catch((err) => console.log(err));
-  }, []);
+  const auth = async () => {
+    try {
+      const resp = await fetch(`${process.env.REACT_APP_SERVER_API}/auth`, {
+        credentials: "include",
+      });
+      if (resp.ok) {
+        const data = await resp.json();
+        navigator(`dashboard/${data.username}`);
+      } else {
+        throw new Error("Not logged in");
+      }
+    } catch (err) {
+      window.alert(err);
+    }
+
+    useEffect(() => {
+      auth();
+    }, []);
+  };
 };
