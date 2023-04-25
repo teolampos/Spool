@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = ({ userInfo, image }) => {
-  const [show, setShow] = useState(false);
   const navigator = useNavigate();
-  const locator = useLocation();
 
   const handleLogout = async () => {
     try {
@@ -21,13 +19,6 @@ const Navbar = ({ userInfo, image }) => {
       window.alert(err);
     }
   };
-
-  //THIS MAKES THE DASHBOARD ICON VISIBLE WHEN THE USER IS ON THE PROFILE PAGE
-  useEffect(() => {
-    if (locator.pathname === `/profile/${userInfo.user.username}`) {
-      setShow(true);
-    }
-  }, []);
 
   return (
     <>
@@ -109,14 +100,14 @@ const Navbar = ({ userInfo, image }) => {
             onClick={() => navigator(`/profile/${userInfo.user.username}`)}
             style={image ? { backgroundImage: `url(${image.url})` } : {}}
           ></span>
-          {show && (
-            <span
-              className="material-icons"
-              onClick={() => navigator(`/dashboard/${userInfo.user.username}`)}
-            >
-              dashboard
-            </span>
-          )}
+
+          <span
+            className="material-icons"
+            onClick={() => navigator(`/dashboard/${userInfo.user.username}`)}
+          >
+            dashboard
+          </span>
+
           <span className="material-icons" onClick={handleLogout}>
             logout
           </span>
