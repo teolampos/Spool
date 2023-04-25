@@ -27,7 +27,7 @@ const Protected = () => {
         } else throw new Error("Could not fetch user");
       } else {
         navigator("/");
-        window.alert(
+        throw new Error(
           "The requested page did not load. Make sure you are using Chrome or Mozzila from a desktop device to access the site"
         );
       }
