@@ -4,11 +4,11 @@ import Navbar from "../Components/Navbar1";
 import ListItem from "../Components/ListItem";
 
 const View = () => {
-  const { user } = useParams();
   const [empty, setEmpty] = useState(null);
   const [userPlatforms, setUserPlatforms] = useState([]);
   const [platforms, setPlatforms] = useState([]);
   const [image, setImage] = useState(null);
+  const { user } = useParams();
   const navigator = useNavigate();
 
   const fetchData = async () => {

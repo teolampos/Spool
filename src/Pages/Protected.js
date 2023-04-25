@@ -28,7 +28,7 @@ const Protected = () => {
       } else {
         navigator("/");
         throw new Error(
-          "The requested page did not load. Make sure you are using Chrome or Mozzila from a desktop device to access the site"
+          "Failed not log in. Your session has expired or you need to make sure you are using either Chrome or Mozzila from a desktop device to access the site"
         );
       }
     } catch (err) {

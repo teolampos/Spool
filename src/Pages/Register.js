@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Loading from "../Components/Loading";
 import { Link, useNavigate } from "react-router-dom";
+import { useSession } from "../useSession";
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -8,6 +9,8 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const navigator = useNavigate();
+
+  useSession();
 
   //REGISTER FUNCTION
   const handleRegister = async (e) => {
