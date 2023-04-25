@@ -24,7 +24,7 @@ const Protected = () => {
           const platforms = await resp2.json();
           setSuccess(true);
           setUserInfo({ user, platforms });
-        }
+        } else throw new Error("Could not fetch user");
       } else {
         navigator("/");
         window.alert(

@@ -9,7 +9,7 @@ const Register = () => {
   const [loading, setLoading] = useState(false);
   const navigator = useNavigate();
 
-  //REGISTER
+  //REGISTER FUNCTION
   const handleRegister = async (e) => {
     try {
       e.preventDefault();
