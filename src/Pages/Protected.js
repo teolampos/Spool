@@ -26,13 +26,13 @@ const Protected = () => {
           setUserInfo({ user, platforms });
         } else throw new Error("Could not fetch user");
       } else {
-        navigator("/");
         throw new Error(
           "Failure during login/signup. Your session has expired or you need to make sure you are using either Chrome or Mozzila from a desktop device to access the site"
         );
       }
     } catch (err) {
       window.alert(err);
+      navigator("/");
     }
   };
 
