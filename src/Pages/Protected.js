@@ -27,7 +27,7 @@ const Protected = () => {
         } else throw new Error("Could not fetch user");
       } else {
         throw new Error(
-          "Failure during login/signup. Your session has expired or you need to make sure you are using either Chrome or Mozzila from a desktop device to access the site"
+          "Failure during login/signup. Your session has expired or you may need to enable third-party cookies if you are on Safari"
         );
       }
     } catch (err) {
